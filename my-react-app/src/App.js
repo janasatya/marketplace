@@ -14,6 +14,7 @@ function App() {
   const [connected, setConnected] = useState(false);
   const [account, setAccount] = useState(null);
   const [webApi, setWebApi] = useState({ provider: null, signer: null,contract:null });
+  const [totalNft,setTotalNft]=useState(0);
 
   return (
     <div className="">
@@ -38,6 +39,7 @@ function App() {
                   myItem={myItem}
                   setMyItem={setMyItem}
                   setAllItem={setAllItem}
+                  setTotalNft={setTotalNft}
                 />
               }
             />
@@ -72,6 +74,7 @@ function App() {
               account={account}
               webApi={webApi}
               connected={connected}
+              totalNft={totalNft}
               />
             }
             />
