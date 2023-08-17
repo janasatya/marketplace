@@ -1,9 +1,12 @@
 import { BigNumber, ethers } from "ethers";
 import { useState, useEffect } from "react";
 
+
 export default function MyNft(props) {
   const [myItem, setMyItem] = useState([]);
   const [reload, setReload] = useState(true);
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -14,10 +17,14 @@ export default function MyNft(props) {
       try {
         const { contract } = props.webApi;
         let items = [];
-        for (let i of props.allItem) {
-          let id = i.id;
-          let address = await contract.ownerOf(BigNumber.from(id));
-          if (address == props.account) items.push(i);
+        for (let i=1;i<=props.totalNft;i++) {
+          let address = await contract.ownerOf(BigNumber.from(i));
+          if (address == props.account){
+            const metadata=await contract.tokenURI(BigNumber.from(i));
+            let meta = await fetch(metadata);
+          meta = await meta.json();
+            items.push({id:i,image:meta.image});
+          }
         }
         console.log(items);
         setMyItem(items);
@@ -36,7 +43,7 @@ export default function MyNft(props) {
       <div className="text-4xl text-center m-20">Wait for a minute........</div>
     );
   }
-  if(props.allItem.length==0){
+  if(myItem.length==0){
     return (
         <div className="text-2xl m-20 text-center">
             No Item is Here
@@ -57,7 +64,7 @@ export default function MyNft(props) {
                 <img src={item.image} alt="" className="h-[300px]" />
                 <div>
                   <div className="bg-cyan-700 text-center py-2 text-white">
-                    Price: {item.price} eth
+                    Token Id: {item.id}
                   </div>
                 </div>
               </li>
