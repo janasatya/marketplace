@@ -31,6 +31,7 @@ export default function Home(props) {
         
         i++;
       }
+      props.setTotalNft(i-1);
       const allItems = await Promise.all(
         tem.map(async (item) => {
           let meta = await fetch(item.tokenUri);
