@@ -1,5 +1,5 @@
 export const ALCHEMY_KEY='https://eth-sepolia.g.alchemy.com/v2/jUNILWo-2IZRP624vdSeIiJzHbFzaOfl'
-export const Contract_Address='0xB68f6Ec131F3F8e249D67c844dab82EcF063Ea99'
+export const Contract_Address='0x140c5eAE810AddCFCa66a99755B1996AbE4B75eb'
 export const pinata={
 APIKey: "7645bec6d1ed386b7a5e",
  APISecret: "9dcd82d4ee42e331132784fd820fde135ecb89c2d4f9bcf122258ce8bfe5052b",
